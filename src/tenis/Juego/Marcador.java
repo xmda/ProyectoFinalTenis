@@ -8,7 +8,7 @@ import tenis.idioma.Idioma;
 
 public class Marcador {
 
-    public Idioma idioma;
+    private Idioma idioma;
 
     public Marcador(Idioma ideoma) {
         this.idioma = ideoma;
@@ -34,18 +34,19 @@ public class Marcador {
         } else if (puntos1 == 30 && puntos2 == 30) {
             return idioma.thirty() + ":" + idioma.all();
         } else if (puntos1 == 15 && puntos2 == 30) {
-            return idioma.fifteen() + "" + idioma.thirty();
+            return idioma.fifteen() + ":" + idioma.thirty();
         } else if (puntos1 == 15 && puntos2 == 40) {
-            return idioma.fifteen() + "" + idioma.forty();
+            return idioma.fifteen() + ":" + idioma.forty();
         } else if (puntos1 == 30 && puntos2 == 15) {
-            return idioma.thirty() + "" + idioma.fifteen();
+            return idioma.thirty() + ":" + idioma.fifteen();
         } else if (puntos1 == 40 && puntos2 == 15) {
-            return idioma.forty() + "" + idioma.fifteen();
+            return idioma.forty() + ":" + idioma.fifteen();
         } else if (puntos1 == 30 && puntos2 == 40) {
-            return idioma.thirty() + "" + idioma.forty();
+            return idioma.thirty() + ":" + idioma.forty();
         } else if (puntos1 == 40 && puntos2 == 30) {
-            return idioma.forty() + "" + idioma.thirty();
-        } else if (diferenciaDeTresJugador1(puntos1, puntos2)) {
+            return idioma.forty() + ":" + idioma.thirty();
+        }
+        if (diferenciaDeTresJugador1(puntos1, puntos2)) {
             return idioma.player_1_win();
         }
         if (diferenciaDeTresJugador1(puntos2, puntos1)) {
@@ -76,11 +77,7 @@ public class Marcador {
         } else {
             puntos2 = ((puntaje2 - 30) % 10 + 2);
         }
-        System.out.println(puntos1+"  "+puntos2);
-        if (puntos1 - puntos2 == 2) {
-            return true;
-        }
-        return false;
+        return puntos1 - puntos2 <= 2;
     }
 
     public Idioma getIdioma() {
@@ -90,4 +87,6 @@ public class Marcador {
     public void setIdioma(Idioma idioma) {
         this.idioma = idioma;
     }
+
+    
 }

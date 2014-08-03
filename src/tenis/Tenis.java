@@ -15,20 +15,9 @@ public class Tenis {
      */
     public static void main(String[] args) {
         Juego j=new Juego();
-        j.setJugador1("Diony");
-        j.setJugador2("Eli");
+        j.setJugador1("Felix");
+        j.setJugador2("Felix");
         j.setIdioma(new Ingles());
         j.iniciarJuego();
-        System.out.println(j.getMarcador());
-        j.getJugador1().anotar();
-        System.out.println(j.getMarcador());
-        j.getJugador1().anotar();
-        System.out.println(j.getMarcador());
-        j.getJugador1().anotar();
-        System.out.println(j.getMarcador());
-        j.getJugador1().anotar();
-        System.out.println(j.getMarcador());
-        j.getJugador1().anotar();
-        System.out.println(j.getMarcador());
     }
 }
