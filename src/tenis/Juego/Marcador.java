@@ -46,38 +46,45 @@ public class Marcador {
         } else if (puntos1 == 40 && puntos2 == 30) {
             return idioma.forty() + ":" + idioma.thirty();
         }
+
+
+        if (puntos1 == puntos2 && puntos1 >= 40) {
+            return idioma.deuce();
+        }
         if (diferenciaDeTresJugador1(puntos1, puntos2)) {
             return idioma.player_1_win();
         }
         if (diferenciaDeTresJugador1(puntos2, puntos1)) {
             return idioma.player_2_win();
         }
-        if (puntos1 == puntos2 && puntos1 >= 40) {
-            return idioma.deuce();
+        if (puntos1 >= 40 || puntos2 >= 40) {
+            if (puntos1 > puntos2) {
+                return idioma.advantage_player_1();
+            }
+            if (puntos2 > puntos1) {
+                return idioma.advantage_player_2();
+            }
         }
-        if (puntos1 >= 40 && puntos2 >= 40 && puntos1 > puntos2) {
-            return idioma.advantage_player_1();
-        }
-        if (puntos1 >= 40 && puntos2 >= 40 && puntos2 > puntos1) {
-            return idioma.advantage_player_2();
-        }
+
+
+
         return "";
     }
 
     private boolean diferenciaDeTresJugador1(int puntaje1, int puntaje2) {
-        int puntos1;
-        int puntos2;
+        int puntos1 = 0;
+        int puntos2 = 0;
         if (puntaje1 <= 30) {
-            puntos1 = puntaje1 % 15;
+            puntos1 = puntaje1 / 15;
         } else {
-            puntos1 = ((puntaje1 - 30) % 10 + 2);
+            puntos1 = ((puntaje1 - 30) / 10 + 2);
         }
         if (puntaje2 <= 30) {
-            puntos2 = puntaje1 % 15;
+            puntos2 = puntaje2 / 15;
         } else {
-            puntos2 = ((puntaje2 - 30) % 10 + 2);
+            puntos2 = ((puntaje2 - 30) / 10 + 2);
         }
-        return puntos1 - puntos2 <= 2;
+        return puntos1 - puntos2 >= 3;
     }
 
     public Idioma getIdioma() {
@@ -87,6 +94,4 @@ public class Marcador {
     public void setIdioma(Idioma idioma) {
         this.idioma = idioma;
     }
-
-    
 }

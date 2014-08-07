@@ -10,9 +10,6 @@ public class PelotaMovimientoDerecha extends EstadoPelota {
         super(pelota);
     }
 
-    /**
-     *
-     */
     @Override
     public void rebotar() {
     }

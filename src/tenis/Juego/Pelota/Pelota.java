@@ -29,7 +29,7 @@ public class Pelota extends JComponent implements Runnable, Observable {
     private EstadoPelota estado;
 
     public Pelota(InterfazGrafica padre) {
-        estado = new PelotaMovimientoDerecha(this);
+        estado = PELOTA_STOP;
         this.padre = padre;
         centro = new Point(padre.getWidth() / 2 - radio, padre.getHeight() / 2 - radio);
         velocidad = 5;
@@ -43,6 +43,7 @@ public class Pelota extends JComponent implements Runnable, Observable {
         incrementoX = (int) (Math.random() * 2 + 1);
         incrementoY = (int) (Math.random() * 2 + 1);
         centro = new Point(padre.getWidth() / 2 - radio, padre.getHeight() / 2 - radio);
+        estado=MOVIMIENTO_DERECHA;
         this.setLocation(centro);
         try {
             Thread.sleep(1000);
@@ -60,6 +61,7 @@ public class Pelota extends JComponent implements Runnable, Observable {
 
     public void start() {
         hilo.start();
+        estado=MOVIMIENTO_DERECHA;
     }
 
     @Override

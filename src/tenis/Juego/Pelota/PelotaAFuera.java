@@ -4,10 +4,7 @@
  */
 package tenis.Juego.Pelota;
 
-/**
- *
- * @author Yannik Gonzalez A
- */
+
 public class PelotaAFuera extends EstadoPelota{
 
     public PelotaAFuera(Pelota pelota) {

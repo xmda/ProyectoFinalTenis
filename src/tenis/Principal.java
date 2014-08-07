@@ -11,12 +11,11 @@ import tenis.idioma.FactoryMethodIdioma;
 
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    
     public Principal() {
         initComponents();
         panel_ingresar_nombres.setVisible(false);
+        
     }
 
     /**

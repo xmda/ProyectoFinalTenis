@@ -21,7 +21,7 @@ public class Raqueta extends JComponent implements KeyListener, Observador {
     private final Color c = Color.BLACK;
     private final int ancho = 50;
     private final int alto = 200;
-    private final int velocidad = 7;
+    private final int velocidad = 10;
     private final boolean raqueda1;
 
     public Raqueta(boolean raqueda1) {
