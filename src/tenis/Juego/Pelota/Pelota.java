@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.JComponent;
-import tenis.Juego.InterfazGrafica;
 import tenis.observer.Observable;
 import tenis.observer.Observador;
 
@@ -18,7 +17,7 @@ public class Pelota extends JComponent implements Runnable, Observable {
     public final EstadoPelota MOVIMIENTO_DERECHA = new PelotaMovimientoDerecha(this);
     public final EstadoPelota PELOTA_AFUERA = new PelotaAFuera(this);
     public final EstadoPelota PELOTA_STOP = new PelotaStop(this);
-    private final InterfazGrafica padre;
+    private static Pelota instancia;
     private Color color;
     private Point centro;
     private int radio = 10;
@@ -28,10 +27,8 @@ public class Pelota extends JComponent implements Runnable, Observable {
     private int incrementoY = 1;
     private EstadoPelota estado;
 
-    public Pelota(InterfazGrafica padre) {
+    private Pelota() {
         estado = PELOTA_STOP;
-        this.padre = padre;
-        centro = new Point(padre.getWidth() / 2 - radio, padre.getHeight() / 2 - radio);
         velocidad = 5;
         hilo = new Thread(this);
         color = Color.BLACK;
@@ -39,11 +36,18 @@ public class Pelota extends JComponent implements Runnable, Observable {
         incrementoY = (int) (Math.random() * 2 + 1);
     }
 
+    public static Pelota getInstance() {
+        if (instancia == null) {
+            instancia = new Pelota();
+        }
+        return instancia;
+    }
+
     public void reiniciar() {
         incrementoX = (int) (Math.random() * 2 + 1);
         incrementoY = (int) (Math.random() * 2 + 1);
-        centro = new Point(padre.getWidth() / 2 - radio, padre.getHeight() / 2 - radio);
-        estado=MOVIMIENTO_DERECHA;
+        centro = new Point(this.getParent().getWidth() / 2 - radio, this.getParent().getHeight() / 2 - radio);
+        estado = MOVIMIENTO_DERECHA;
         this.setLocation(centro);
         try {
             Thread.sleep(1000);
@@ -61,7 +65,7 @@ public class Pelota extends JComponent implements Runnable, Observable {
 
     public void start() {
         hilo.start();
-        estado=MOVIMIENTO_DERECHA;
+        estado = MOVIMIENTO_DERECHA;
     }
 
     @Override
@@ -72,11 +76,13 @@ public class Pelota extends JComponent implements Runnable, Observable {
 
     @Override
     public void run() {
+
+        centro = new Point(this.getParent().getWidth() / 2 - radio, this.getParent().getHeight() / 2 - radio);
         this.setLocation(centro);
         while (true) {
             try {
                 estado.mover();
-                if (this.getLocation().x < 0 || this.getLocation().x + this.getWidth() > padre.getWidth()) {
+                if (this.getLocation().x < 0 || this.getLocation().x + this.getWidth() > this.getParent().getWidth()) {
                     estado = new PelotaAFuera(this);
                 }
                 notificar();

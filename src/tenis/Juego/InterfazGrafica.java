@@ -34,16 +34,17 @@ public class InterfazGrafica extends JFrame implements Observador, ActionListene
     private final JButton reiniciar;
     private EstadoPelota estado_anterior_al_stop;
     private final MarcadorTabla marcadorT;
+                    JLabel txt_quien_gano = new JLabel();
 
     public InterfazGrafica(Jugador jugador1, Jugador jugador2, Marcador marcador) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.marcador = marcador;
-        pelota = new Pelota(this);
+        pelota = Pelota.getInstance();
         raquetaJugador1 = new Raqueta(true);
         raquetaJugador2 = new Raqueta(false);
         letreroMarcador = new JPanel();
-        marcadorT =new MarcadorTabla();
+        marcadorT = new MarcadorTabla(jugador1.getNombre(),jugador2.getNombre());
         stop = new JToggleButton("Stop");
         reiniciar = new JButton("reiniciar");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +66,8 @@ public class InterfazGrafica extends JFrame implements Observador, ActionListene
         stop.addActionListener(this);
         reiniciar.addActionListener(this);
         letreroMarcador.setLayout(null);
-        marcadorT.setMarcador(marcador);
+        marcadorT.setMarcador(marcador,jugador1.getNombre(),jugador2.getNombre());
+        marcadorT.reiniciar();
         marcadorT.setVisible(true);
         JLabel temporal = new JLabel(marcador.marcador(0, 0));
         JLabel temporal2 = new JLabel("0:0");
@@ -91,7 +93,7 @@ public class InterfazGrafica extends JFrame implements Observador, ActionListene
                     jugador1.anotar();
                     p.reiniciar();
                     p.setEstado(p.MOVIMIENTO_DERECHA);
-                } else if(p.seMueveALaIzquierda()) {
+                } else if (p.seMueveALaIzquierda()) {
                     jugador2.anotar();
                     p.reiniciar();
                     p.setEstado(p.MOVIMIENTO_IZQUIERDA);
@@ -99,11 +101,18 @@ public class InterfazGrafica extends JFrame implements Observador, ActionListene
                 String txt_marcador = this.marcador.marcador(jugador1.getPuntuacion(), jugador2.getPuntuacion());
                 if ((txt_marcador == null ? this.marcador.getIdioma().player_1_win() == null : txt_marcador.equals(this.marcador.getIdioma().player_1_win())) || (txt_marcador == null ? this.marcador.getIdioma().player_2_win() == null : txt_marcador.equals(this.marcador.getIdioma().player_2_win()))) {
                     p.setEstado(p.PELOTA_STOP);
+                    txt_quien_gano.setHorizontalAlignment(JLabel.CENTER);
+                    txt_quien_gano.setVerticalAlignment(JLabel.CENTER);
+                    txt_quien_gano.setFont(new java.awt.Font("Tahoma", 1, 24));
                     if (txt_marcador.equals(this.marcador.getIdioma().player_1_win())) {
                         JOptionPane.showMessageDialog(this, "Ganó: " + jugador1.getNombre());
+                        txt_quien_gano.setText("Ganó: " + jugador1.getNombre());
                     } else {
+                        txt_quien_gano.setText("Ganó: " + jugador2.getNombre());
                         JOptionPane.showMessageDialog(this, "Ganó: " + jugador2.getNombre());
                     }
+
+                    this.add(txt_quien_gano).setBounds(0, 0, this.getWidth(), this.getHeight());
                 }
                 marcadorT.setDatos(jugador1.getPuntuacion(), jugador2.getPuntuacion());
                 letreroMarcador.removeAll();
@@ -139,6 +148,7 @@ public class InterfazGrafica extends JFrame implements Observador, ActionListene
             JLabel temporal2 = new JLabel("0:0");
             temporal.setHorizontalAlignment(JLabel.CENTER);
             temporal2.setHorizontalAlignment(JLabel.CENTER);
+            txt_quien_gano.setText("");
             letreroMarcador.setOpaque(false);
             letreroMarcador.add(temporal).setBounds(0, 0, this.getWidth(), 25);
             letreroMarcador.add(temporal2).setBounds(0, 25, this.getWidth(), 25);

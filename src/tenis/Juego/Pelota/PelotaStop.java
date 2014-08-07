@@ -5,8 +5,6 @@
 package tenis.Juego.Pelota;
 
 
-
-
 public class PelotaStop extends EstadoPelota {
 
     public PelotaStop(Pelota pelota) {

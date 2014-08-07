@@ -72,8 +72,8 @@ public class Marcador {
     }
 
     private boolean diferenciaDeTresJugador1(int puntaje1, int puntaje2) {
-        int puntos1 = 0;
-        int puntos2 = 0;
+        int puntos1 ;
+        int puntos2 ;
         if (puntaje1 <= 30) {
             puntos1 = puntaje1 / 15;
         } else {

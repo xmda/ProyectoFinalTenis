@@ -137,25 +137,39 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        panel_ingresar_nombres.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel1.setForeground(new java.awt.Color(255, 153, 153));
         jLabel1.setText("Jugador 1");
 
+        nombre_jugador1.setForeground(new java.awt.Color(255, 51, 102));
         nombre_jugador1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombre_jugador1ActionPerformed(evt);
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 153, 153));
         jLabel2.setText("Jugador 2");
 
+        nombre_jugador_2.setForeground(new java.awt.Color(255, 51, 102));
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 153, 153));
         jLabel3.setText("Ingresa el nombre de los jugadores");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jLabel4.setForeground(new java.awt.Color(255, 153, 153));
         jLabel4.setText("Idioma");
 
-        ideoma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Español", "Ingles" }));
+        ideoma.setForeground(new java.awt.Color(255, 153, 153));
+        ideoma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aleman", "Español", "Frances", "Ingles" }));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 102));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 102, 102));
         jButton1.setText("Iniciar Juego");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 204), new java.awt.Color(255, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(0, 102, 102)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -166,11 +180,14 @@ public class Principal extends javax.swing.JFrame {
         panel_ingresar_nombres.setLayout(panel_ingresar_nombresLayout);
         panel_ingresar_nombresLayout.setHorizontalGroup(
             panel_ingresar_nombresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ingresar_nombresLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ingresar_nombresLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panel_ingresar_nombresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addGroup(panel_ingresar_nombresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_ingresar_nombresLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_ingresar_nombresLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(panel_ingresar_nombresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_ingresar_nombresLayout.createSequentialGroup()
@@ -184,10 +201,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(panel_ingresar_nombresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombre_jugador1)
                             .addComponent(nombre_jugador_2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ideoma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ingresar_nombresLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                            .addComponent(ideoma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panel_ingresar_nombresLayout.setVerticalGroup(
@@ -207,8 +221,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(panel_ingresar_nombresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(ideoma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -284,13 +298,7 @@ public class Principal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

@@ -5,6 +5,7 @@ package tenis;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.HeadlessException;
 import javax.swing.table.DefaultTableModel;
 import tenis.Juego.Marcador;
 
@@ -18,15 +19,23 @@ public class MarcadorTabla extends javax.swing.JFrame {
      * Creates new form MarcadorEsp
      */
     private Marcador marcador;
+    String j1,j2;
 
     public Marcador getMarcador() {
         return marcador;
     }
 
-    public void setMarcador(Marcador marcador) {
+    public void setMarcador(Marcador marcador,String j1,String j2) {
+        this.j1=j1;
+        this.j2=j2;
         this.marcador = marcador;
         this.label_idioma.setText(marcador.getIdioma().getClass().getSimpleName());
         this.label_puntuacion.setText(marcador.getIdioma().love() + " " + marcador.getIdioma().all());
+        tabla = new DefaultTableModel();
+        tabla.addColumn(j1);
+        tabla.addColumn(j2);
+        tabla.addColumn("Puntuacion");
+        this.jTable1.setModel(tabla);
     }
 
     public void setDatos(int p1, int p2) {
@@ -39,23 +48,37 @@ public class MarcadorTabla extends javax.swing.JFrame {
     }
 
     public void reiniciar() {
-
         tabla = new DefaultTableModel();
-        tabla.addColumn("Spieler 1");
-        tabla.addColumn("Spieler 2");
-        tabla.addColumn("Partitur");
+        tabla.addColumn(j1);
+        tabla.addColumn(j2);
+        tabla.addColumn("Puntuacion");
         this.jTable1.setModel(tabla);
     }
     private DefaultTableModel tabla;
 
-    public MarcadorTabla() {
+    public MarcadorTabla(String j1,String j2) {
+        super();
+        this.j1=j1;
+        this.j2=j2;
         initComponents();
         tabla = new DefaultTableModel();
-        tabla.addColumn("Spieler 1");
-        tabla.addColumn("Spieler 2");
-        tabla.addColumn("Partitur");
+        tabla.addColumn(j1);
+        tabla.addColumn(j2);
+        tabla.addColumn("Puntuacion");
         this.jTable1.setModel(tabla);
     }
+
+    public MarcadorTabla() throws HeadlessException {
+        initComponents();
+        tabla = new DefaultTableModel();
+        tabla.addColumn(j1);
+        tabla.addColumn(j2);
+        tabla.addColumn("Puntuacion");
+        this.jTable1.setModel(tabla);
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,16 +102,20 @@ public class MarcadorTabla extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
-        label_puntuacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_puntuacion.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         label_puntuacion.setForeground(new java.awt.Color(0, 102, 102));
-        label_puntuacion.setText("Puntuacion :  Cero iguales");
+        label_puntuacion.setText("Puntuación :  Cero iguales");
 
         label_idioma.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        label_idioma.setForeground(new java.awt.Color(255, 255, 255));
+        label_idioma.setForeground(new java.awt.Color(255, 255, 153));
         label_idioma.setText("Español");
 
+        jTable1.setBackground(new java.awt.Color(255, 255, 204));
+        jTable1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 0, 12), new java.awt.Color(255, 51, 102))); // NOI18N
+        jTable1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(204, 0, 51));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
@@ -150,6 +177,6 @@ public class MarcadorTabla extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_idioma;
-    private javax.swing.JLabel label_puntuacion;
+    public javax.swing.JLabel label_puntuacion;
     // End of variables declaration//GEN-END:variables
 }

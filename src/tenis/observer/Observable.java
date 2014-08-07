@@ -9,10 +9,7 @@ import java.util.List;
 
 
 public interface Observable {
-    
-    /**
-     *
-     */
+ 
     public List<Observador> observadores =new LinkedList<>();
     
     public void notificar();

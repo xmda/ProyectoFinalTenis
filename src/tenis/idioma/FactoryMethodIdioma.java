@@ -13,7 +13,11 @@ public class FactoryMethodIdioma {
                 return new Español();
             case "Ingles":
                 return new Ingles();
+            case "Aleman":
+                return new Aleman();
+            case "Frances":
+                return new Frances();
         }
-        return new Español();
+        return new Ingles();
     }
 }
