@@ -4,12 +4,15 @@
  */
 package tenis.Juego;
 
+import tenis.Juego.Pelota.Pelota;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JComponent;
+import tenis.Juego.Pelota.PelotaMovimientoDerecha;
+import tenis.Juego.Pelota.PelotaMovimientoIzquierda;
 import tenis.observer.Observable;
 import tenis.observer.Observador;
 
@@ -18,18 +21,23 @@ public class Raqueta extends JComponent implements KeyListener, Observador {
     private final Color c = Color.BLACK;
     private final int ancho = 50;
     private final int alto = 200;
-    private final int velocidad = 1;
+    private final int velocidad = 7;
     private final boolean raqueda1;
 
     public Raqueta(boolean raqueda1) {
         this.raqueda1 = raqueda1;
+        this.addKeyListener(this);
     }
 
     @Override
     public void paint(Graphics g) {
         g.setColor(c);
         g.fillRect(0, 0, ancho, alto);
-        this.addKeyListener(this);
+        if (this.hasFocus()) {
+
+            g.setColor(Color.white);
+            g.drawRect(0, 0, ancho, alto);
+        }
     }
 
     @Override
@@ -59,9 +67,12 @@ public class Raqueta extends JComponent implements KeyListener, Observador {
     public void update(Observable o) {
         if (o instanceof Pelota) {
             Pelota p = (Pelota) o;
-            Point pelota = p.getLocation();
             if (tocaPelota(p)) {
-                p.rebota();
+                if (p.getEstado() instanceof PelotaMovimientoDerecha) {
+                    p.setEstado(p.MOVIMIENTO_IZQUIERDA);
+                } else if (p.getEstado() instanceof PelotaMovimientoIzquierda) {
+                    p.setEstado(p.MOVIMIENTO_DERECHA);
+                }
             }
         }
     }
@@ -69,13 +80,13 @@ public class Raqueta extends JComponent implements KeyListener, Observador {
     private boolean tocaPelota(Pelota p) {
         Point pelota = p.getLocation();
         Point raqueta = this.getLocation();
-        if (p.seMueveALaDerecha() && raqueda1) {
-            if (pelota.x + p.getWidth() > raqueta.x && pelota.y >= raqueta.y && pelota.y <= raqueta.y + this.getHeight()) {
+        if (p.getEstado() instanceof PelotaMovimientoIzquierda && raqueda1) {
+            if (this.getWidth() + raqueta.x > pelota.x && pelota.y >= raqueta.y && pelota.y <= raqueta.y + this.getHeight()) {
                 return true;
             }
         }
-        if (!raqueda1 && p.seMueveALaIzquierda()) {
-            if (pelota.x < raqueta.x + this.getWidth() && pelota.y >= raqueta.y && pelota.y <= raqueta.y + this.getHeight()) {
+        if (!raqueda1 && p.getEstado() instanceof PelotaMovimientoDerecha) {
+            if (pelota.x + p.getWidth() > raqueta.x && pelota.y >= raqueta.y && pelota.y <= raqueta.y + this.getHeight()) {
                 return true;
             }
         }

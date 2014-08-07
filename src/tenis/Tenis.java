@@ -7,7 +7,6 @@ package tenis;
 import tenis.Juego.Juego;
 import tenis.idioma.Ingles;
 
-
 public class Tenis {
 
     /**
@@ -15,8 +14,8 @@ public class Tenis {
      */
     public static void main(String[] args) {
         Juego j=new Juego();
-        j.setJugador1("Felix");
-        j.setJugador2("Felix");
+        j.setJugador1(" tu");
+        j.setJugador2("yo ");
         j.setIdioma(new Ingles());
         j.iniciarJuego();
     }

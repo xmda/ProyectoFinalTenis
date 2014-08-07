@@ -14,7 +14,7 @@ public class Juego {
     private Jugador jugador2;
     private Marcador marcador;
     private Idioma idioma;
-    private Campo campo;
+    private InterfazGrafica campo;
     private Idioma[] idiomasDisponibles = new Idioma[]{new Español(), new Ingles()};
 
     public Juego() {
@@ -25,12 +25,12 @@ public class Juego {
         jugador2 = new Jugador(nombreJugador2);
         marcador = new Marcador(i);
         idioma = i;
-        campo = new Campo(jugador1, jugador2, marcador);
+        campo = new InterfazGrafica(jugador1, jugador2, marcador);
     }
 
     public void iniciarJuego() {
         if(campo==null)
-          campo = new Campo(jugador1, jugador2, marcador);
+          campo = new InterfazGrafica(jugador1, jugador2, marcador);
         campo.setVisible(true);
         campo.lanzarPelota();
     }
