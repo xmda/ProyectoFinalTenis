@@ -10,11 +10,11 @@ public class Marcador {
 
     private Idioma idioma;
 
-    public Marcador(Idioma ideoma) {
-        this.idioma = ideoma;
+    public Marcador(Idioma idioma) {
+        this.idioma = idioma;
     }
 
-    public String marcador(int puntos1, int puntos2) {
+    public String EstablecerMarcador(int puntos1, int puntos2) {
         if (puntos1 == 0 && puntos2 == 0) {
             return idioma.love() + ":" + idioma.all();
         } else if (puntos1 == 0 && puntos2 == 15) {
@@ -51,10 +51,10 @@ public class Marcador {
         if (puntos1 == puntos2 && puntos1 >= 40) {
             return idioma.deuce();
         }
-        if (diferenciaDeTresJugador1(puntos1, puntos2)) {
+        if (diferenciaParaGanar(puntos1, puntos2)) {
             return idioma.player_1_win();
         }
-        if (diferenciaDeTresJugador1(puntos2, puntos1)) {
+        if (diferenciaParaGanar(puntos2, puntos1)) {
             return idioma.player_2_win();
         }
         if (puntos1 >= 40 || puntos2 >= 40) {
@@ -71,7 +71,7 @@ public class Marcador {
         return "";
     }
 
-    private boolean diferenciaDeTresJugador1(int puntaje1, int puntaje2) {
+    private boolean diferenciaParaGanar(int puntaje1, int puntaje2) {
         int puntos1 ;
         int puntos2 ;
         if (puntaje1 <= 30) {

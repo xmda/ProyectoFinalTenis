@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Pelota/PelotaMovimientoDerecha.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/idioma/Frances.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Pelota/EstadoPelota.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Pelota/PelotaStop.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Marcador.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Principal.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Pelota/PelotaAFuera.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Juego.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/MarcadorTabla.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Pelota/Pelota.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/idioma/FactoryMethodIdioma.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/idioma/Idioma.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Jugador.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/idioma/Ingles.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/idioma/Español.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Raqueta.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/observer/Observador.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/observer/Observable.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/EstablecerInterfazGrafica.java</file>
+            <file>file:/C:/Users/Eli/Documents/Tenis(7)-1/Tenis/src/tenis/Juego/Pelota/PelotaMovimientoIzquierda.java</file>
+        </group>
+    </open-files>
 </project-private>

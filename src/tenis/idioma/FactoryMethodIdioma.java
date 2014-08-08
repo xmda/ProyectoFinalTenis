@@ -6,7 +6,7 @@ package tenis.idioma;
 
 public class FactoryMethodIdioma {
 
-    public static Idioma creaIdeoma(String nombre) {
+    public static Idioma creaIdioma(String nombre) {
 
         switch (nombre) {
             case "Español":
